@@ -23,12 +23,12 @@ def do_pack():
 
 def do_deploy(archive_path):
     ''' distributes an archive to web servers '''
-    if not exists('web_static.tgz'):
+    if not exists(archive_path):
         return False
     try:
-        put('web_static.tgz', '/tmp/')
-        base = web_static.split('/')[-1]
-        extent = name.split('.')[0]
+        put(archive_path, '/tmp/')
+        base = archive_path.split('/')[-1]
+        extent = base.split('.')[0]
         rel = '/data/web_static/releases/'
         cur = '/data/web_static/current'
         run('mkdir -p {}{}/'.format(rel, extent))
