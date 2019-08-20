@@ -8,7 +8,7 @@ env.hosts = ['35.190.156.211', '34.73.132.239']
 
 
 def do_pack():
-    """ Function to make a pack of a directory on local"""
+    """ Function to make a pack of a directory on local """
 
     local('mkdir -p versions')
     date = datetime.now().strftime("%Y%m%d%H%M%S")
@@ -22,7 +22,7 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    ''' distributes an archive to web servers '''
+    """ distributes an archive to web servers """
     if not exists(archive_path):
         return False
     try:
@@ -47,7 +47,7 @@ def deploy():
     """ fabrick script that creates an archive and distribute it """
 
     a = do_pack()
-    if !test:
+    if not a:
         return False
     else:
         new = do_deploy(a)
