@@ -12,7 +12,7 @@ from models.review import Review
 
 class FileStorage:
     """This class serializes instances to a JSON file and
-    deserializes JSON file to instances
+    dese rializes JSON file to instances
     Attributes:
         __file_path: path to the JSON file
         __objects: objects will be stored
@@ -32,7 +32,7 @@ class FileStorage:
             for key, val in self.__objects.items():
                 k = key.split(".")[0] == cls.__name__
                 if k:
-                    new[key] = val.to_dict()
+                    new.update({key: val})
             return new
 
     def new(self, obj):
@@ -70,3 +70,7 @@ class FileStorage:
             if obj == val:
                 del self.__objects[key]
                 break
+
+    def close(self):
+        """ close json file """
+        self.reload()

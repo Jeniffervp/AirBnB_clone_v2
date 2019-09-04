@@ -24,7 +24,7 @@ class State(BaseModel, Base):
         def cities(self):
 
             lista = []
-            obje = storage.all(City)
+            obje = models.storage.all(City)
 
             for key, val in obje.items():
                 if val.state_id == self.id:
