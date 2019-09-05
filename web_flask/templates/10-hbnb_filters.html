@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/4-common.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/3-header.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/3-footer.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/6-filters.css') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/icon.png') }}" />
+    <title>HBnB</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+    </header>
+    <div class="container">
+      <section class="filters">
+        <div class="locations">
+          <h3>States</h3>
+          <h4>&nbsp;</h4>
+          <div class="popover">
+            <ul>
+              <li>
+		{% for stat in var|sort(attribute="name") %}
+                <h2>{{ stat.name }}:</h2>
+                <ul>
+		  {% for cit in stat.cities|sort(attribute="name") %}
+                  <li>{{ cit.name }}</li>
+                  {% endfor %}
+                </ul>
+		{% endfor %}
+              </li>
+          </div>
+        </div>
+        <div class="amenities">
+          <h3>Amenities</h3>
+          <h4>&nbsp;</h4>
+          <div class="popover">
+            <ul>
+	      {% for ameni in var2|sort(attribute="name") %}
+              <li>{{ ameni.name }}</li>
+	      {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <button type="button">Search</button>
+      </section>
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
+</html>
