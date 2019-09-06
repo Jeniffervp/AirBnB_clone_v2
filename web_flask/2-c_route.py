@@ -22,4 +22,4 @@ def some_text(text):
     return "C {}".format(text.replace("_", " "))
 
 if __name__ == "__main__":
-    hbnb.run(host="0.0.0.0", port="5000")
+    hbnb.run(host="0.0.0.0", port=5000)

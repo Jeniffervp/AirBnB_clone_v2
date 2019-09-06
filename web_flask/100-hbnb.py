@@ -4,17 +4,22 @@ from flask import Flask, render_template
 from models import storage
 from models.state import State
 from models.amenity import Amenity
+from models.place import Place
+from models.user import User
 
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 
-@app.route('/hbnb_filters')
+@app.route('/hbnb')
 def states():
-    var = list(storage.all(State).values())
-    var2 = list(storage.all(Amenity).values())
-    return render_template("10-hbnb_filters.html", var=var, var2=var2)
+    stat = list(storage.all(State).values())
+    ameni = list(storage.all(Amenity).values())
+    plac = list(storage.all(Place).values())
+    usr = list(storage.all(User).values())
+    return render_template("100-hbnb.html", stat=stat, ameni=ameni,
+                           plac=plac, usr=usr)
 
 
 @app.teardown_appcontext
